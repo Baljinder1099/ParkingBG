@@ -42,7 +42,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     public static final String USERNAME = "USERNAME";
     public static final String PASSWORD = "PASSWORD";
     public static final int SIGN_UP_REQUEST_CODE = 1;
-    public  static final String USER_PREF = "com.jk.coffeeroom.userpref";
+    public  static final String USER_PREF = "com.example.parkingbg.userpref";
 
 
 
@@ -57,7 +57,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
             public void onChanged(List<User> users) {
                 //task when the data changes
                 for (User user : users){
-                    Log.e("SignInActivity", user.toString());
+                    Log.e("SignIn", user.toString());
                 }
             }
         });
