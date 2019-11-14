@@ -21,7 +21,7 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_launcher);
 
         btn_SignIn = findViewById(R.id.btnSignin);
         btn_SignIn.setOnClickListener(this);
