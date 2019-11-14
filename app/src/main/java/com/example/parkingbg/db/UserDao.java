@@ -1,6 +1,7 @@
 package com.example.parkingbg.db;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -15,6 +16,7 @@ import java.util.List;
  * Student ID : 991540911
  * on 14-11-2019
  */
+@Dao
 public interface UserDao {
     @Insert
     void insert(User user);
