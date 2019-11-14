@@ -7,4 +7,24 @@
     <string name="signUp">Not Already a member? Sign Up</string>
     <string name="rememberMe">Remember Me</string>
     <string name="forgotPass">Forgot Password</string>
+    <string name="addParking">Add Parking</string>
+    <string name="receipt">View Parking Receipt</string>
+    <string name="receiptList">View Parking Receipt List</string>
+    <string name="nearbyFacilities">Search Nearby Parking Facilities</string>
+    <string name="UpdateProfile">Update User Profile</string>
+    <string name="manual">Parking App Manual</string>
+    <string name="consumerSupport">Consumer Support</string>
+    <string name="Signout">Sign Out</string>
+    <string name="first">First Name</string>
+    <string name="last">Lastname</string>
+    <string name="phone">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="plateNo">Car Plate Number</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm Password</string>
+    <string name="cardNo">Credit Card Number</string>
+    <string name="expiry">Expiry Date</string>
+    <string name="nameOnCard">Name On Card</string>
+    <string name="cvv">CVV</string>
+    <string name="submit">Submit</string>
 </resources>
