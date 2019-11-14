@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ParkingBG</string>
+    <string name="signIn">Sign In</string>
+    <string name="parkingApp">Parking Application</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="signUp">Not Already a member? Sign Up</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="forgotPass">Forgot Password</string>
+</resources>
