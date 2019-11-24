@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SignIn"></activity>
-        <activity android:name=".SignUpActivity"/>
-        <activity android:name=".Launcher">
+        <activity android:name=".Launcher"/>
+
+        <activity android:name=".SignIn"/>
+        <activity android:name=".AddParking">
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

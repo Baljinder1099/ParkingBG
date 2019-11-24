@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.parkingbg.model.Parking;
 import com.example.parkingbg.model.User;
 
 import java.util.List;
@@ -21,6 +22,9 @@ public interface UserDao {
     @Insert
     void insert(User user);
 
+    @Insert
+    void insert(Parking parking);
+
     @Update
     void update(User user);
 
@@ -32,4 +36,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM user_table ORDER BY email ASC")
     LiveData<List<User>> getAllUsers();
+
+    @Query("SELECT * FROM parking_table ORDER BY carPlate ASC")
+    LiveData<List<Parking>> getAllParking();
 }

@@ -39,7 +39,7 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     }
     private void signIn(){
         Intent signInIntent;
-        signInIntent = new Intent(this, SignIn.class);
+        signInIntent = new Intent(Launcher.this, SignIn.class);
         startActivity(signInIntent);
 
     }

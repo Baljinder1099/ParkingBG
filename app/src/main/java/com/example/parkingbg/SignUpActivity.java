@@ -10,6 +10,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parkingbg.model.User;
+import com.example.parkingbg.viewModel.UserViewModel;
 
 /**
  * ParkingBG created by gursharansandhu
@@ -42,6 +43,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     EditText edtCvv;
 
     Button btnSubmit;
+
+    UserViewModel userViewModel;
 
     public static final String EXTRA_REPLY = "com.example.parkingbg.REPLY";
 
@@ -92,6 +95,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         User newUser = new User(firstName, lastName, phoneNumber, email, password,
                 plateNo, cardNo, expiry, nameOnCard, cvv);
+
+        //userViewModel.insert(newUser);
+
         Log.d("SignUpActivity", newUser.toString());
 
         //reply to previous intent

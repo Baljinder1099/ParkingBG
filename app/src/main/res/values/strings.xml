@@ -27,4 +27,8 @@
     <string name="nameOnCard">Name On Card</string>
     <string name="cvv">CVV</string>
     <string name="submit">Submit</string>
+    <string name="building">Building Code</string>
+    <string name="buildingCode">Building Code</string>
+    <string name="hours">No of Hours</string>
+    <string name="suitNo">Suit Number of Host</string>
 </resources>
