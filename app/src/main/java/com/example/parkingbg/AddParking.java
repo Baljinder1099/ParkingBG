@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 import com.example.parkingbg.model.Parking;
 import com.example.parkingbg.model.User;
@@ -17,6 +18,7 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static com.example.parkingbg.SignUpActivity.EXTRA_REPLY;
 
@@ -105,6 +107,18 @@ public class AddParking extends AppCompatActivity implements View.OnClickListene
         //userViewModel.insert(newParking);
 
         Log.d("AddParking", newParking.toString());
+        userViewModel = new UserViewModel(getApplication());
+
+        userViewModel = new UserViewModel(getApplication());
+        userViewModel.getAllUsers().observe(AddParking.this, new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                for (User user : users){
+                    Log.e("SignIn", user.toString());
+                }
+            }
+        });
+        userViewModel.insert(newParking);
 
         //reply to previous intent
         Intent replyIntent = new Intent();

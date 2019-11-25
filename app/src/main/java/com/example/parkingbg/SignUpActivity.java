@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 import com.example.parkingbg.model.User;
 import com.example.parkingbg.viewModel.UserViewModel;
+
+import java.util.List;
 
 /**
  * ParkingBG created by gursharansandhu
@@ -99,7 +102,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         User newUser = new User(firstName, lastName, phoneNumber, email, password,
                 plateNo, cardNo, expiry, nameOnCard, cvv);
-        //userViewModel.insert(newUser);
+        userViewModel = new UserViewModel(getApplication());
+
+        userViewModel = new UserViewModel(getApplication());
+        userViewModel.getAllUsers().observe(SignUpActivity.this, new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                for (User user : users){
+                    Log.e("SignIn", user.toString());
+                }
+            }
+        });
+        userViewModel.insert(newUser);
 
         Log.d("SignUpActivity", newUser.toString());
 

@@ -50,9 +50,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
-        userViewModel = new UserViewModel(getApplication());
         this.referWidgets();
+        userViewModel = new UserViewModel(getApplication());
+
         userViewModel = new UserViewModel(getApplication());
         userViewModel.getAllUsers().observe(SignIn.this, new Observer<List<User>>() {
             @Override
