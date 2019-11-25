@@ -56,7 +56,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         userViewModel.getAllUsers().observe(SignIn.this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
-                //task when the data changes
                 for (User user : users){
                     Log.e("SignIn", user.toString());
                 }

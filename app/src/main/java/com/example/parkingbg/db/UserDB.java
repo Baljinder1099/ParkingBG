@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.parkingbg.model.Parking;
 import com.example.parkingbg.model.User;
 
 /**
@@ -13,7 +14,8 @@ import com.example.parkingbg.model.User;
  * Student ID : 991540911
  * on 14-11-2019
  */
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Parking.class}, version = 1)
+
 public abstract class UserDB extends RoomDatabase {
     public abstract UserDao userDao();
 
