@@ -45,7 +45,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     Button btnSubmit;
 
     UserViewModel userViewModel;
-
     public static final String EXTRA_REPLY = "com.example.parkingbg.REPLY";
 
     @Override
@@ -92,13 +91,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         phoneNumber = edtPhone.getText().toString();
         email = edtEmail.getText().toString();
         password = edtPswd.getText().toString();
+        plateNo = edtPlateNo.getText().toString();
+        cardNo = edtCardNo.getText().toString();
+        expiry = edtExpiry.getText().toString();
+        nameOnCard = edtNameOnCard.getText().toString();
+        cvv = edtCvv.getText().toString();
 
         User newUser = new User(firstName, lastName, phoneNumber, email, password,
                 plateNo, cardNo, expiry, nameOnCard, cvv);
-        userViewModel.insert(newUser);
-
-        userViewModel = new UserViewModel(getApplication());
-        userViewModel.insert(newUser);
+        //userViewModel.insert(newUser);
 
         Log.d("SignUpActivity", newUser.toString());
 

@@ -18,20 +18,23 @@ import java.util.List;
  */
 public class ViewReceipt extends AppCompatActivity {
     UserViewModel userViewModel;
-}
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        this.referWidgets();
+        //this.referWidgets();
         userViewModel = new UserViewModel(getApplication());
         userViewModel.getAllUsers().observe(ViewReceipt.this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
-                for (User user : users){
+                for (User user : users) {
                     Log.e("SignIn", user.toString());
                 }
             }
         });
+    }
+
+
 }
-}
+
