@@ -52,6 +52,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_sign_in);
 
         this.referWidgets();
+        userViewModel = new UserViewModel(getApplication());
         userViewModel.getAllUsers().observe(SignIn.this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
@@ -115,7 +116,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
             //login successful
 
             Toast.makeText(this, "Login successful",Toast.LENGTH_LONG).show();
-            this.openMainActivity();
+            this.openHomeActivity();
         }else{
             //login unsuccessful
             Toast.makeText(this, "Incorrect Username/Password ! Try again.",Toast.LENGTH_LONG).show();
@@ -159,7 +160,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 //        sp.edit().remove(PASSWORD).commit();
     }
 
-    void openMainActivity(){
+    void openHomeActivity(){
         Intent mainIntent = new Intent(SignIn.this, HomeActivity.class);
         startActivity(mainIntent);
     }

@@ -28,7 +28,11 @@
     <string name="cvv">CVV</string>
     <string name="submit">Submit</string>
     <string name="building">Building Code</string>
-    <string name="buildingCode">Building Code</string>
     <string name="hours">No of Hours</string>
     <string name="suitNo">Suit Number of Host</string>
+    <string name="parkingReceipt">Parking Receipt</string>
+    <string name="buildingCode">Building Code</string>
+    <string name="dateTime">Date-Time</string>
+    <string name="parkingCharges">Parking Charges</string>
+    <string name="done">Done</string>
 </resources>

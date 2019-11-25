@@ -95,8 +95,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         User newUser = new User(firstName, lastName, phoneNumber, email, password,
                 plateNo, cardNo, expiry, nameOnCard, cvv);
+        userViewModel.insert(newUser);
 
-        //userViewModel.insert(newUser);
+        userViewModel = new UserViewModel(getApplication());
+        userViewModel.insert(newUser);
 
         Log.d("SignUpActivity", newUser.toString());
 
