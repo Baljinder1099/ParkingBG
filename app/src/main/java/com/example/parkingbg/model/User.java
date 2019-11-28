@@ -50,18 +50,6 @@ public class User implements Serializable {
     private String cvv;
 
 
-    public User(String firstName, String lastName, String phoneNumber, String email, String password, String plateNo, String cardNo, String expiry, String nameOnCard, String cvv) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.password = password;
-        this.plateNo = plateNo;
-        this.cardNo = cardNo;
-        this.expiry = expiry;
-        this.nameOnCard = nameOnCard;
-        this.cvv = cvv;
-    }
 
     public int getId() {
         return id;
@@ -154,7 +142,8 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

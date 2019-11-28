@@ -39,6 +39,8 @@ public class UserRepository {
 
     public void insert(Parking parking){ new insertParkingAsyncTask(userDao).execute(parking); }
 
+    public void update(User user){ new updateUserAsyncTask(userDao).execute(user); }
+
 
 
     private static class insertUserAsyncTask extends AsyncTask<User,  Void, Void> {
@@ -52,6 +54,29 @@ public class UserRepository {
 
         @Override
         protected Void doInBackground(User... users) {
+            asyncTaskDao.insert(users[0]);
+            return null;
+        }
+
+
+    }
+
+
+
+
+
+    private static class updateUserAsyncTask extends AsyncTask<User,  Void, Void> {
+
+        private UserDao asyncTaskDao;
+
+        updateUserAsyncTask(UserDao userDao){
+            asyncTaskDao = userDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(User... users) {
+            asyncTaskDao.update(users[0]);
             asyncTaskDao.insert(users[0]);
             return null;
         }

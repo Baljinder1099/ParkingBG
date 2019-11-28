@@ -110,15 +110,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     private void nearbyFacilities(){
+        Intent mapIntent = new Intent(this, MapsActivity.class);
+        startActivity(mapIntent);
 
     }
     private void update(){
 
+        Intent updateIntent = new Intent(this, UpdateActivity.class);
+        startActivity(updateIntent);
+
     }
     private void manual(){
+        Intent manualIntent = new Intent(this, AppManualActivity.class);
+        startActivity(manualIntent);
 
     }
     private void support(){
+        Intent supportIntent = new Intent(this, SupportActivity.class);
+        startActivity(supportIntent);
 
     }
     private void signOut(){

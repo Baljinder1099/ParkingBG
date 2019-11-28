@@ -10,6 +10,8 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.example.parkingbg.db.UserDB;
+import com.example.parkingbg.db.UserDao;
 import com.example.parkingbg.model.User;
 import com.example.parkingbg.viewModel.UserViewModel;
 
@@ -18,9 +20,9 @@ import java.util.List;
 /**
  * ParkingBG created by gursharansandhu
  * Student ID : 991544576
- * on 14-11-2019
+ * on 2019-11-28
  */
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+public class UpdateActivity extends AppCompatActivity implements View.OnClickListener{
 
     String firstName;
     String lastName;
@@ -48,12 +50,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     Button btnSubmit;
 
     UserViewModel userViewModel;
+    UserDB userDB;
+    UserDao userDao;
     public static final String EXTRA_REPLY = "com.example.parkingbg.REPLY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_update);
 
         this.referWidgets();
     }
@@ -77,18 +81,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+
+
+
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick(View view) {
+
+        switch (view.getId()){
             case R.id.btn_Submit:
                 if (this.validateData()){
-                    this.createUserAndReply();
+                    this.updateUserAndReply();
                 }
                 break;
         }
     }
 
-    private void createUserAndReply(){
+    private void updateUserAndReply(){
         firstName = edtFname.getText().toString();
         lastName = edtLname.getText().toString();
         phoneNumber = edtPhone.getText().toString();
@@ -100,27 +108,62 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         nameOnCard = edtNameOnCard.getText().toString();
         cvv = edtCvv.getText().toString();
 
+//
 //        User newUser = new User(firstName, lastName, phoneNumber, email, password,
 //                plateNo, cardNo, expiry, nameOnCard, cvv);
-        User newUser= new User();
-        userViewModel = new UserViewModel(getApplication());
+//        userViewModel = new UserViewModel(getApplication());
+//
+//        userViewModel = new UserViewModel(getApplication());
+//        userViewModel.getAllUsers().observe(UpdateActivity.this, new Observer<List<User>>() {
+//            @Override
+//            public void onChanged(List<User> users) {
+//                for (User user : users){
+//                    Log.e("Update", user.toString());
+//                }
+//            }
+//        });
+//        userViewModel.update(newUser);
+//
+//        Log.d("UpdateActivity", newUser.toString());
+//
+//        //reply to previous intent
+//        Intent replyIntent = new Intent();
+//        replyIntent.putExtra(EXTRA_REPLY, newUser);
+//        setResult(RESULT_OK, replyIntent);
+//        finish();
+
+
+
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPhoneNumber(phoneNumber);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setPlateNo(plateNo);
+        user.setCardNo(cardNo);
+        user.setExpiry(expiry);
+        user.setNameOnCard(nameOnCard);
+        user.setCvv(cvv);
+
 
         userViewModel = new UserViewModel(getApplication());
-        userViewModel.getAllUsers().observe(SignUpActivity.this, new Observer<List<User>>() {
+        userViewModel.getAllUsers().observe(UpdateActivity.this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 for (User user : users){
-                    Log.e("SignIn", user.toString());
+                    Log.e("Update", user.toString());
                 }
             }
         });
-        userViewModel.insert(newUser);
 
-        Log.d("SignUpActivity", newUser.toString());
+        userViewModel.update(user);
 
-        //reply to previous intent
+
+        Log.d("UpdateActivity", user.toString());
+
         Intent replyIntent = new Intent();
-        replyIntent.putExtra(EXTRA_REPLY, newUser);
+        replyIntent.putExtra(EXTRA_REPLY, user);
         setResult(RESULT_OK, replyIntent);
         finish();
 
@@ -193,8 +236,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         return allValidations;
     }
-
-
 
 
 }
