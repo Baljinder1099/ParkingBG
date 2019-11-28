@@ -34,9 +34,12 @@ public interface UserDao {
     @Query("DELETE FROM user_table WHERE email = :email")
     void deleteUserByEmail(String email);
 
+    @Query("SELECT * FROM parking_table WHERE id = :id")
+    Parking fetchParkingFromId(String id);
+
     @Query("SELECT * FROM user_table ORDER BY email ASC")
     LiveData<List<User>> getAllUsers();
 
-    @Query("SELECT * FROM parking_table ORDER BY carPlate ASC")
+    @Query("SELECT * FROM parking_table ORDER BY id ASC")
     LiveData<List<Parking>> getAllParking();
 }

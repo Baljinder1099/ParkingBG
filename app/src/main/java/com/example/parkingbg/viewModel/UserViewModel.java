@@ -21,11 +21,13 @@ public class UserViewModel extends AndroidViewModel {
     private LiveData<List<User>> allUsers;
     private LiveData<List<Parking>> allParkings;
     private UserRepository userRepository;
+    private Parking parking = new Parking();
     public UserViewModel(@NonNull Application application) {
         super(application);
         userRepository = new UserRepository(application);
         allUsers = userRepository.getAllUsers();
         allParkings = userRepository.getAllParking();
+
     }
     public void insert(User user){
         userRepository.insert(user);
@@ -38,4 +40,16 @@ public class UserViewModel extends AndroidViewModel {
     public LiveData<List<User>> getAllUsers(){
         return allUsers;
     }
+
+    public LiveData<List<Parking>> getAllParkings(){
+        return allParkings;
+    }
+
+
+
+    public Parking fetchParkingFromId(String id){
+        parking = userRepository.fetchParkingFromId(id);
+        return parking;
+    }
+
 }

@@ -56,6 +56,17 @@ public class AddParking extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_addparking);
 
         this.referWidgets();
+        userViewModel = new UserViewModel(getApplication());
+        userViewModel.getAllParkings().observe(AddParking.this, new Observer<List<Parking>>() {
+            @Override
+            public void onChanged(List<Parking> parkings) {
+                for (Parking parking : parkings){
+                    Log.e("AddParking", parking.toString());
+                }
+            }
+        });
+        List<Parking> allParkings = userViewModel.getAllParkings().getValue();
+
     }
 
     private void referWidgets(){
@@ -72,8 +83,9 @@ public class AddParking extends AppCompatActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnAddParking:
-                this.createParkingAndReply();
-
+                if (this.validateData()){
+                    this.createParkingAndReply();
+                }
                 break;
         }
     }
@@ -106,93 +118,53 @@ public class AddParking extends AppCompatActivity implements View.OnClickListene
 
         //userViewModel.insert(newParking);
 
-        Log.d("AddParking", newParking.toString());
-        userViewModel = new UserViewModel(getApplication());
 
-        userViewModel = new UserViewModel(getApplication());
-        userViewModel.getAllUsers().observe(AddParking.this, new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
-                for (User user : users){
-                    Log.e("SignIn", user.toString());
-                }
-            }
-        });
+
+
         userViewModel.insert(newParking);
+        Log.d("AddParking", newParking.toString());
+
+//        int parkingId = newParking.getId();
+//        String id = String.valueOf(parkingId);
 
         //reply to previous intent
-        Intent replyIntent = new Intent();
+        Intent replyIntent = new Intent(this, ViewReceipt.class);
         replyIntent.putExtra(EXTRA_REPLY, newParking);
         setResult(RESULT_OK, replyIntent);
+        replyIntent.putExtra("EXTRA_CARPLATE", carPlateNo);
         finish();
+        startActivity(replyIntent);
+
+
 
     }
 
-//    private boolean validateData(){
-//        boolean allValidations = true;
-//
-//        if (edt_BuildingCode.getText().toString().isEmpty()){
-//            edt_BuildingCode.setError("You must enter Building Code");
-//            allValidations = false;
-//        }
-//
-//        if (edtLname.getText().toString().isEmpty()){
-//            edtLname.setError("You must enter last name");
-//            allValidations = false;
-//        }
-//
-//        if (edtPhone.getText().toString().isEmpty()){
-//            edtPhone.setError("You must provide phone number");
-//            allValidations = false;
-//        }
-//
-//
-//        if (edtEmail.getText().toString().isEmpty()){
-//            edtEmail.setError("Email cannot be empty");
-//            allValidations = false;
-//        }else if (!Utils.isValidEmail(edtEmail.getText().toString())){
-//            edtEmail.setError("Please provide valid email address");
-//            allValidations = false;
-//        }
-//
-//        if (edtPswd.getText().toString().isEmpty()){
-//            edtPswd.setError("Please enter password");
-//            allValidations = false;
-//        }
-//
-//        if (edtConfirm.getText().toString().isEmpty()){
-//            edtConfirm.setError("You must enter confirm password");
-//            allValidations = false;
-//        }else if (!edtPswd.getText().toString().equals(edtConfirm.getText().toString())){
-//            edtConfirm.setError("Both passwords must be same");
-//            allValidations = false;
-//        }
-//
-//        if (edtPlateNo.getText().toString().isEmpty()){
-//            edtPlateNo.setError("You must enter plate number");
-//            allValidations = false;
-//        }
-//
-//        if (edtCardNo.getText().toString().isEmpty()){
-//            edtCardNo.setError("You must enter card number");
-//            allValidations = false;
-//        }
-//
-//        if (edtExpiry.getText().toString().isEmpty()){
-//            edtExpiry.setError("You must enter expiry date");
-//            allValidations = false;
-//        }
-//
-//        if (edtNameOnCard.getText().toString().isEmpty()){
-//            edtNameOnCard.setError("You must enter the name on card");
-//            allValidations = false;
-//        }
-//
-//        if (edtCvv.getText().toString().isEmpty()){
-//            edtCvv.setError("You must enter valid CVV");
-//            allValidations = false;
-//        }
-//
-//        return allValidations;
-//    }
+    private boolean validateData() {
+        boolean allValidations = true;
+
+        if (edt_BuildingCode.getText().toString().isEmpty()) {
+            edt_BuildingCode.setError("You must enter Building Code");
+            allValidations = false;
+        }
+
+        if (edt_noOfHours.getText().toString().equals("0")) {
+            edt_noOfHours.setError("You cannot park for 0 hours");
+            allValidations = false;
+        }
+
+        if (edt_carPlateNo.getText().toString().isEmpty()) {
+            edt_carPlateNo.setError("You must provide car number plate");
+            allValidations = false;
+        }
+
+
+        if (edt_suitNo.getText().toString().isEmpty()) {
+            edt_suitNo.setError("Suit No cannot be empty");
+            allValidations = false;
+        }
+        return allValidations;
+    }
+
+
+
 }

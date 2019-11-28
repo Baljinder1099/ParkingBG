@@ -1,12 +1,16 @@
 package com.example.parkingbg.model;
 
+import androidx.lifecycle.Observer;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.parkingbg.ViewReceipt;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 /**
  * ParkingBG created by Baljinder
@@ -47,6 +51,9 @@ public class Parking implements Serializable {
         this.suitNo = suitNo;
         this.dateTime = dateTime;
         this.parkingCharges = parkingCharges;
+    }
+
+    public Parking() {
     }
 
 
@@ -116,13 +123,19 @@ public class Parking implements Serializable {
         this.dateTime = dateTime;
     }
 
+
+
+    public void observe(ViewReceipt viewReceipt, Observer<List<Parking>> viewReceipt1) {
+    }
+
     @Override
     public String toString() {
         return "Parking{" +
-                "buildingCode=" + buildingCode +
+                "id=" + id +
+                ", buildingCode=" + buildingCode +
                 ", hours=" + hours +
                 ", carPlate='" + carPlate + '\'' +
-                ", SuitNo='" + suitNo + '\'' +
+                ", suitNo='" + suitNo + '\'' +
                 ", dateTime='" + dateTime + '\'' +
                 ", parkingCharges=" + parkingCharges +
                 '}';

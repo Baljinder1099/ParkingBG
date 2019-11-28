@@ -20,12 +20,14 @@ public class UserRepository {
     private UserDao userDao;
     private LiveData<List<User>> allUsers;
     private LiveData<List<Parking>> allParking;
+    private Parking parking = new Parking();
 
     public UserRepository(Application application) {
         UserDB db = UserDB.getINSTANCE(application);
         userDao = db.userDao();
         allUsers = userDao.getAllUsers();
         allParking = userDao.getAllParking();
+
     }
     public LiveData<List<User>> getAllUsers() {
         return allUsers;
@@ -91,6 +93,27 @@ public class UserRepository {
         @Override
         protected Void doInBackground(String... strings) {
             asyncTaskDao.deleteUserByEmail(strings[0]);
+            return null;
+        }
+    }
+
+    public Parking fetchParkingFromId(String id){
+        new fetchParkingFromIdAsyncTask(userDao).execute(id);
+        parking = userDao.fetchParkingFromId(id);
+        return parking;
+    }
+
+    private static class fetchParkingFromIdAsyncTask extends AsyncTask<String, Void, Void>{
+
+        private UserDao asyncTaskDao;
+
+        fetchParkingFromIdAsyncTask(UserDao dao){
+            asyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            asyncTaskDao.fetchParkingFromId(strings[0]);
             return null;
         }
     }

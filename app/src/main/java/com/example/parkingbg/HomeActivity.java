@@ -104,10 +104,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     private void receipt(){
+        Intent addParkingIntent = new Intent(this, ViewReceipt.class);
+        startActivity(addParkingIntent);
 
     }
     private void receiptList(){
-
+        Intent viewReceiptListIntent = new Intent(this, ReceiptList.class);
+        startActivity(viewReceiptListIntent);
     }
     private void nearbyFacilities(){
 
@@ -122,6 +125,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     private void signOut(){
-
+        Intent signOut = new Intent(this, Launcher.class);
+        startActivity(signOut);
     }
 }

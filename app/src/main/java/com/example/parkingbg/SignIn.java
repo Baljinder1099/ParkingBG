@@ -51,7 +51,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         this.referWidgets();
-        userViewModel = new UserViewModel(getApplication());
+
 
         userViewModel = new UserViewModel(getApplication());
         userViewModel.getAllUsers().observe(SignIn.this, new Observer<List<User>>() {
